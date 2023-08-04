@@ -1,0 +1,10 @@
+- op: add
+  path: /data
+  value:
+    policy.default: role:readonly
+    policy.csv: |
+      p, role:group-a, applications, *, default/*, deny
+      p, role:group-b, applications, *, default/*, deny
+
+      g, group-a, role:group-a
+      g, group-b, role:group-b
