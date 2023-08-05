@@ -1,16 +1,14 @@
 # 개요
 * kustomize로 argocd 설치
 
+# 전제조건
+* 30950, 30951 포트 미사용
+  * 이유: argocd server pod가 30950/30950포트를 nodeport로 사용
+
 # 설치방법
 ```bash
 kubectl create ns argocd
 kubectl kustomize ./ | kubectl apply -f -
-```
-
-# WEB 대시보드 접속방법
-* argocd-server service port-forwarding
-```bash
-kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 
 # admin default password
@@ -33,7 +31,7 @@ sudo mv ./argocd-$PLATFORM /usr/local/bin/argocd
 # /pathces/argocd-cm.yaml에 설정된 계정 비밀번호 변경
 ADMIN_PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
 NEW_PASSWORD=password1234
-argocd login 127.0.0.1:8080 --insecure --username admin --password $ADMIN_PASSWORD
+argocd login 127.0.0.1:30951 --insecure --username admin --password $ADMIN_PASSWORD
 argocd account update-password --account alice --current-password $ADMIN_PASSWORD --new-password $NEW_PASSWORD
 argocd account update-password --account bob --current-password $ADMIN_PASSWORD --new-password $NEW_PASSWORD
 argocd account update-password --account tom --current-password $ADMIN_PASSWORD --new-password $NEW_PASSWORD

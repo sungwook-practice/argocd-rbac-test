@@ -22,3 +22,10 @@ patchesJson6902:
       name: argocd-cm
       namespace: argocd
     path: patches/argocd-cm.yaml
+
+  - target:
+      version: v1
+      kind: Service
+      name: argocd-server
+      namespace: argocd
+    path: patches/argocd-server-svc.yaml
