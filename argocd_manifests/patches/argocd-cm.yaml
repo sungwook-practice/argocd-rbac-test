@@ -1,6 +1,0 @@
-- op: add
-  path: /data
-  value: 
-    accounts.alice: login
-    accounts.bob: login
-    accounts.tom: login
