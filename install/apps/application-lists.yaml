@@ -1,7 +1,0 @@
-apps:
-- app_name: argocd
-  argocd_project: default
-  repoUrl: "https://github.com/sungwook-practice/argocd-rbac-test.git"
-  revision: HEAD
-  path: bootstrap/cluster-a
-  dest_cluster: https://kubernetes.default.svc
