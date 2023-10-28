@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
 - ./a/application-a.yaml
-- ./b/application-b.yaml
+# - ./b/application-b.yaml
