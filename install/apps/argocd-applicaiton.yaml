@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    path: bootstrap
+    path: install
     repoURL: https://github.com/sungwook-practice/argocd-rbac-test.git
     targetRevision: HEAD
   destination:
