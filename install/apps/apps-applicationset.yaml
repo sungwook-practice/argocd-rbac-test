@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: bootstraps
+  name: apps
   namespace: argocd
 spec:
   generators:
   - list:
       elements:
-      - appName: cluster-a
+      - cluster: cluster-a
         appProject: default
         k8sURL: https://kubernetes.default.svc
         gitRepoURL: https://github.com/sungwook-practice/argocd-rbac-test.git
-        path: bootstrap/cluster-a
+        path: apps/cluster-a
         targetRevision: HEAD
   template:
     metadata:
-      name: '{{appName}}-bootstrap'
+      name: '{{cluster}}-apps'
     spec:
       project: '{{appProject}}'
       source:
